@@ -6,7 +6,11 @@ import axios from "axios";
  export const fetchTasks = createAsyncThunk("tasks/fetchAll", async (_, thunkAPI) => {
     try {
       const response = await axios.get(baseURl);
-      return response.data;
+    const data = response.data;
+
+      const normalizedData= Array.isArray(data) ? data : Array.isArray(data?.tasks)  ? data.tasks : [];
+
+    return normalizedData;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message || "Failed to fetch tasks");
     }
@@ -87,6 +91,7 @@ export const taskSlice = createSlice({
           .addCase(fetchTasks.fulfilled, (state, action) => {
             state.loading = false;
             state.tasks = action.payload;
+            state.error = null;
           })
           .addCase(fetchTasks.rejected, (state, action) => {
             state.loading = false;
