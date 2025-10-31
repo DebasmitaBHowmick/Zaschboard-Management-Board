@@ -5,7 +5,7 @@ import axios from "axios";
 
  export const fetchTasks = createAsyncThunk("tasks/fetchAll", async (_, thunkAPI) => {
     try {
-      const response = await axios.get(baseURl);
+      const response = await axios.get(`${baseURl}/api/tasks`);
     const data = response.data;
 
       const normalizedData= Array.isArray(data) ? data : Array.isArray(data?.tasks)  ? data.tasks : [];
@@ -19,7 +19,7 @@ import axios from "axios";
   // Create new task
   export const createTask = createAsyncThunk("tasks/create", async (task, thunkAPI) => {
     try {
-      const response = await axios.post(baseURl, task, {
+      const response = await axios.post(`${baseURl}/api/tasks`, task, {
         headers: { "Content-Type": "application/json" },
       });
       if (response.status === 200) {
@@ -34,7 +34,7 @@ import axios from "axios";
   //update tasks
   export const updateTask = createAsyncThunk("tasks/update", async (task, thunkAPI) => {
     try {
-      const response = await axios.patch(`${baseURl}/${task.id}`, task, {
+      const response = await axios.patch(`${baseURl}/api/tasks/${task.id}`, task, {
         headers: { "Content-Type": "application/json" },
       });
       return response.data;
@@ -50,7 +50,7 @@ import axios from "axios";
         console.log("Delete task API call - Task ID:", taskId);
         console.log("Delete URL:", `${baseURl}/${taskId}`);
         
-        const response = await axios.delete(`${baseURl}/${taskId}`);
+        const response = await axios.delete(`${baseURl}/api/tasks/${taskId}`);
         console.log("Delete response:", response);
         
         // Some backends return deleted item or status
