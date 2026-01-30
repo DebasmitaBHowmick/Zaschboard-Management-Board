@@ -158,10 +158,10 @@ const AddTasks = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 py-10 px-4">
+    <div className="pt-24 min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 py-10 px-4">
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl p-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-purple-700">
+          <h1 className="text-3xl font-bold text-purple-700 mt-8">
             Manager Dashboard
           </h1>
           <div className="flex items-center gap-4">

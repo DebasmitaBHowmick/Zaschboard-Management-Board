@@ -39,12 +39,15 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
-     <Header/>
-     <RouterComp/>
-      <ToastContainer autoClose={2000} closeOnClick="true"/>
-     <Footer/>
-    </div>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#7f93ce] via-[#96a5f3] to-[#6f82c8] dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#020617]">
+  <Header />
+  <main className="flex-1 dark:from-[#0f172a] dark:via-[#1e293b] dark:to-[#020617]">
+    <RouterComp />
+  </main>
+  <Footer />
+  <ToastContainer autoClose={2000} closeOnClick />
+</div>
+
   );
 }
 
